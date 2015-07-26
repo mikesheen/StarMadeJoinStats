@@ -54,12 +54,20 @@ You will probably need to give permissions to the webserver on the js files
 chgrp -R www-data js/*.*
 ```
 ### crontabs ###
+You need to add some crontabs to regularly parse the logs and generate the files the graphs report on. I opted for once an hour. The unique index on the table means you can parse the same log file without risk of duplicates - this was the only reliably way I found of updating the logs which StarMade generates.
+Edit the crontab with:
 
 ```
 crontab -e
+```
+Then add the crontab entries:
+
+```
 # m h  dom mon dow   command
 #crontab one minute past every hour to create log entries in the mysql connectionlog table
 1 * * * * /usr/bin/php -f /home/starmade/StarMade/starmadeconnectionlog.php
 #crontab on the second minute of every hour to generate the text files we graph on
 2 * * * * /home/starmade/StarMade/starmadeupdatedailyplayercount.sh
 ```
+
+It will be some time (days) before you start to get a useful amount of data. If you have older log files, you can feed that into the MySQL table by copying the starmadeconnectionlog.php, and editing the log file source for a one-off import of older logs.
