@@ -40,9 +40,11 @@ CREATE TABLE IF NOT EXISTS `connectionlog` (
 
 ## Configuration ##
 ### starmadeconnectionlog.php ###
+This PHP script parses ALL the log files in your server log folder and puts the entries into the MySQL table.
 place this file in your starmade server folder (the same folder as the game)
 Edit the starmadeconnectionlog.php and set the variables at the top to be the appropriate values
 ### starmadeupdatedailyplayercount.sh ###
+This shell script runs queries against the MySQL table to produce the text files (CSV) the web page needs for the graphs. I opted to generate the CSV's once an hour because I didn't want the web clients causing database hits - so this is a poor mans caching strategy.
 place this file in your starmade server folder (the same folder as the game)
 Edit the starmadeupdatedailyplayercount.sh and set the variables at the top to be the appropriate values
 Set the permission for this file to allow execute: chmod +x starmadeupdatedailyplayercount.sh
