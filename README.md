@@ -16,13 +16,18 @@ apt-get install mysql-server
 
 ## Installation ##
 Create the MySQL database and user, and set permissions
+
+```
 mysql -u root -p
 mysql> create user 'starmade'@'localhost' identified by 'thisismymysqlpassword';
 mysql> create database starmadedb;
 mysql> grant usage on *.* to starmade@localhost identified by 'thisismymysqlpassword';
 mysql> grant all privileges on starmadedb.* to starmade@localhost;
+```
 
-Create the table
+Now create the table
+
+```
 CREATE TABLE IF NOT EXISTS `connectionlog` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `playername` varchar(50) NOT NULL,
@@ -31,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `connectionlog` (
   UNIQUE KEY `playername_date` (`playername`,`date`),
   KEY `playername` (`playername`,`date`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+```
 
 ## Configuration ##
 ### starmadeconnectionlog.php ###
@@ -43,10 +49,17 @@ Set the permission for this file to allow execute: chmod +x starmadeupdatedailyp
 ### www files ###
 place these in a folder under your www root - be sure to include the js folder.
 You will probably need to give permissions to the webserver on the js files
-chgrp -R www-data js/*.*
 
+```
+chgrp -R www-data js/*.*
+```
 ### crontabs ###
+
+```
+crontab -e
+# m h  dom mon dow   command
 #crontab one minute past every hour to create log entries in the mysql connectionlog table
 1 * * * * /usr/bin/php -f /home/starmade/StarMade/starmadeconnectionlog.php
 #crontab on the second minute of every hour to generate the text files we graph on
 2 * * * * /home/starmade/StarMade/starmadeupdatedailyplayercount.sh
+```
