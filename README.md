@@ -70,4 +70,12 @@ Then add the crontab entries:
 2 * * * * /home/starmade/StarMade/starmadeupdatedailyplayercount.sh
 ```
 
-It will be some time (days) before you start to get a useful amount of data. If you have older log files, you can feed that into the MySQL table by copying the starmadeconnectionlog.php, and editing the log file source for a one-off import of older logs.
+It will be some time (days) before you start to get a useful amount of data. If you have older log files, you can feed that into the MySQL table by copying the starmadeconnectionlog.php, and editing the log file source in that, then running it for a one-off import of older logs.
+
+eg: copy starmadeconnectionlog.php to legacyimport.php
+Then edit legacyimport.php to point to your older log files
+Now run the php manually:
+
+```
+/usr/bin/php -f /home/starmade/StarMade/legacyimport.php
+```
