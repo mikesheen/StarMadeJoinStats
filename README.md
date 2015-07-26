@@ -54,7 +54,7 @@ You will probably need to give permissions to the webserver on the js files
 chgrp -R www-data js/*.*
 ```
 ### crontabs ###
-You need to add some crontabs to regularly parse the logs and generate the files the graphs report on. I opted for once an hour. The unique index on the table means you can parse the same log file without risk of duplicates - this was the only reliably way I found of updating the logs which StarMade generates.
+You need to add some crontabs to regularly parse the logs and generate the files the graphs report on. I opted for once an hour. The unique index on the table means you can parse the same log file without risk of duplicates - this was the only reliable way I found of updating the logs with the retention policy which StarMade has for log files. You don't want the crontab to be more than a day, and and it only takes a fraction of a second to run - one hour has worked fine in my production server for over a year, with no impact on server peformance.
 Edit the crontab with:
 
 ```
