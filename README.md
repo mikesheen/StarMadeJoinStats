@@ -47,7 +47,11 @@ Edit the starmadeconnectionlog.php and set the variables at the top to be the ap
 This shell script runs queries against the MySQL table to produce the text files (CSV) the web page needs for the graphs. I opted to generate the CSV's once an hour because I didn't want the web clients causing database hits - so this is a poor mans caching strategy.
 place this file in your starmade server folder (the same folder as the game)
 Edit the starmadeupdatedailyplayercount.sh and set the variables at the top to be the appropriate values
-Set the permission for this file to allow execute: chmod +x starmadeupdatedailyplayercount.sh
+Set the permission for this file to allow execute: 
+
+```
+chmod +x starmadeupdatedailyplayercount.sh
+```
 ### www files ###
 place these in a folder under your www root - be sure to include the js folder.
 You will probably need to give permissions to the webserver on the js files
