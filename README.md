@@ -7,7 +7,10 @@ StarMadeJoinStats is a small project utilising MySQL, PHP and javascript to prov
 
 It works by parsing the game log files on a scheduled basis (crontabs), and inserting into a MySQL table unique appearances of a player per day. Armed with that raw data, some simple analysis can be done to produce useful information such as new vs returning players per day and per month.
 
-An example of this can be seen at: https://www.sheen.id.au/starmadejoinstats/
+Example image: ![alt tag](https://raw.github.com/mikesheen/starmadejoinstats/master/sampleimage.png)
+
+
+Live example: https://www.sheen.id.au/starmadejoinstats/
 
 ## Prerequisites ##
 
